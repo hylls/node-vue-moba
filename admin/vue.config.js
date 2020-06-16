@@ -4,6 +4,10 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  outputDir: __dirname + '/../server/admin',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/admin/'
+    : '/',
   chainWebpack(config) {
     config.resolve.alias
       .set('@', resolve('src'))

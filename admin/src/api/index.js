@@ -5,11 +5,13 @@ import Vue from 'vue'
 import router from '../router/index'
 
 const http = axios.create({
-  baseURL: 'http://localhost:3000/admin/api/rest',
+  baseURL: process.env.VUE_APP_API_URL || '/admin/api/rest',
+  // baseURL: 'http://localhost:3000/admin/api/rest',
 })
 
 const http2 = axios.create({
-  baseURL: 'http://localhost:3000/admin/api',
+  baseURL: process.env.VUE_APP_API_URL2 || '/admin/api',
+  // baseURL: 'http://localhost:3000/admin/api',
 })
 
 http2.interceptors.request.use(config => {
@@ -65,7 +67,8 @@ export { http, http2 }
 
 export default function request(config) {
   const http = axios.create({
-    baseURL: 'http://localhost:3000/admin/api',
+    baseURL: process.env.VUE_APP_API_URL2 || '/admin/api',
+    // baseURL: 'http://localhost:3000/admin/api',
     // timeout: 5000
   })
   return http(config)
