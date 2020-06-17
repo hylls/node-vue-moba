@@ -8,6 +8,9 @@ app.use(require('cors')())
 app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use('/admin', express.static(__dirname + '/admin'))
 app.use('/', express.static(__dirname + '/web'))
+app.get('/love', (req, res) => {
+  res.send('李连霜我爱你')
+})
 
 require('./plugins/db.js')(app)
 require('./routes/admin/index.js')(app)
