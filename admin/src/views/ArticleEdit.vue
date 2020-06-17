@@ -27,7 +27,6 @@
 
 <script>
 import { VueEditor } from "vue2-editor";
-import axios from 'axios'
 export default {
   components: {
     VueEditor
@@ -55,7 +54,7 @@ export default {
     async handleImageAdded(file, Editor, cursorLocation, resetUploader) {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post('http://localhost:3000/admin/api/upload', formData)
+      const res = await this.$http2.post('/upload', formData)
       let url = res.data.url;
       Editor.insertEmbed(cursorLocation, "image", url);
       resetUploader();
